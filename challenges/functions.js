@@ -1,20 +1,12 @@
 // ==== Callbacks ====  
-function sumNums(x, y, cb) {
-  // sumNums adds two numbers (x, y) and passes the result to the callback.
-  return cb(x + y);
-}
-function summer(summed){
-  console.log("the sum is ", summed);
-}
-sumNums(11, 4, summer);
 /* Step 1: Create a higher-order function that accepts a callback
   * Create a higher-order function named consume that can take 3 parameters.
   * The first two parameters can accept any argument
   * The last parameter accepts a callback 
   * In the body of the function return the callback with the two parameters that you created
 */
+//I WROTE 2 IMPERFECT SOLUTIONS TO THIS PROBLEM BECAUSE I COULD NOT FIGURE OUT THE RIGHT WAY TO DO IT, BOTH SEEM TO WORK BUT ONLY UNCOMMENT ONE OF THEM AT A TIME WHEN CHECKING, DUE TO NAMESPACE COLLISION
 //solution 1
-/*
 function consume(a, b, callb){
   callb(a + b);
 }
@@ -36,9 +28,13 @@ function greeting(phrase) {
   console.log(phrase);
   return phrase;
 }
-*/
+consume(2,2,add); // 4
+consume1(10,16,multiply); // 160
+consume2("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+
 
 //solution 2
+/*
 function add(a, b, cb){
   cb(a + b);
 }
@@ -52,6 +48,12 @@ function consume(pass){
   console.log(pass);
   return pass;
 }
+add(2,2,consume); // 4
+multiply(10,16, consume); // 160
+greeting("Mary","Poppins", consume); // Hello Mary Poppins, nice to meet you!
+*/
+
+
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
   * Create a function named multiply that returns the product of two numbers 
@@ -73,17 +75,6 @@ function greeting(phrase) {
 */
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-//solution 1
-/*
-consume(2,2,add); // 4
-consume1(10,16,multiply); // 160
-consume2("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
-*/
-
-//solution 2
-add(2,2,consume); // 4
-multiply(10,16, consume); // 160
-greeting("Mary","Poppins", consume); // Hello Mary Poppins, nice to meet you!
 
 // ==== Closures ==== 
 
