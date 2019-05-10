@@ -1,5 +1,12 @@
 // ==== Callbacks ====  
-
+function sumNums(x, y, cb) {
+  // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return cb(x + y);
+}
+function summer(summed){
+  console.log("the sum is ", summed);
+}
+sumNums(11, 4, summer);
 /* Step 1: Create a higher-order function that accepts a callback
   * Create a higher-order function named consume that can take 3 parameters.
   * The first two parameters can accept any argument
@@ -7,18 +14,37 @@
   * In the body of the function return the callback with the two parameters that you created
 */
 
-function consume()
+function consume(a, b, callb){
+  callb(a + b);
+}
+function consume1(a, b, callb){
+  callb(a * b);
+}
+function consume2(a, b, callb){
+  callb(`Hello ${a} ${b}, nice to meet you!`);
+}
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
   * Create a function named multiply that returns the product of two numbers 
   * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
 */
-
+function add(sum) {
+  console.log(sum);
+  return sum;
+}
+function multiply(product) {
+  console.log(product);
+  return product;
+}
+function greeting(phrase) {
+  console.log(phrase);
+  return phrase;
+}
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// consume(2,2,add); // 4
-// consume(10,16,multiply); // 160
-// consume("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+consume(2,2,add); // 4
+consume1(10,16,multiply); // 160
+consume2("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
 
 
 // ==== Closures ==== 
@@ -31,11 +57,11 @@ function consume()
 const external = "I'm outside the function";
 
 function myFunction() {
-  console.log(external);
+  //console.log(external);
   const internal = "Hello! I'm inside myFunction!";
 
   function nestedFunction() {
-    console.log(internal);
+    //console.log(internal);
   };
   nestedFunction();
 }
