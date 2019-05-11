@@ -7,6 +7,7 @@
 */
 //I WROTE 2 IMPERFECT SOLUTIONS TO THIS PROBLEM BECAUSE I COULD NOT FIGURE OUT THE RIGHT WAY TO DO IT, BOTH SEEM TO WORK BUT ONLY UNCOMMENT ONE OF THEM AT A TIME WHEN CHECKING, DUE TO NAMESPACE COLLISION
 //solution 1
+/*
 function consume(a, b, callb){
   callb(a + b);
 }
@@ -31,7 +32,7 @@ function greeting(phrase) {
 consume(2,2,add); // 4
 consume1(10,16,multiply); // 160
 consume2("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
-
+*/
 
 //solution 2
 /*
@@ -53,6 +54,28 @@ multiply(10,16, consume); // 160
 greeting("Mary","Poppins", consume); // Hello Mary Poppins, nice to meet you!
 */
 
+//solution 3 (correct)
+function consume(a, b, callb){
+  callb(a, b);
+}
+function add(a, b) {
+  let sum = a + b;
+  console.log(sum);
+  return sum;
+}
+function multiply(a, b) {
+  let product = a * b;
+  console.log(product);
+  return product;
+}
+function greeting(a, b) {
+  let phrase = `Hello ${a} ${b}, nice to meet you!`;
+  console.log(phrase);
+  return phrase;
+}
+consume(2,2,add); // 4
+consume(10,16,multiply); // 160
+consume("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
